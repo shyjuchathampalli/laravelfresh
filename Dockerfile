@@ -29,4 +29,6 @@ RUN chown -R www-data:www-data /var/www \
 
 # Expose port 8080 and start PHP-FPM server
 EXPOSE 8080
+#RUN sed -i 's/listen = 9000/listen = 8080/' /usr/local/etc/php-fpm.d/www.conf
+RUN sed -i 's/listen = 9000/listen = 0.0.0.0:8080/' /usr/local/etc/php-fpm.d/www.conf
 CMD ["php-fpm"]
